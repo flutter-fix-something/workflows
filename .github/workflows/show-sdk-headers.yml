@@ -11,7 +11,6 @@ jobs:
           - iPhoneOS
           - iPhoneSimulator
         os:
-          - macos-10.15
           - macos-11
           - macos-12
           - macos-latest
