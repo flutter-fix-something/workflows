@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Show SDK Headers
         run: |
-          ls -l /Applications/Xcode.app/Contents/Developer/Platforms/{{ matrix.sdk }}.platform/Developer/SDKs/{{ matrix.sdk }}.sdk/usr/include > /tmp/sdk-headers.txt
+          ls -l /Applications/Xcode.app/Contents/Developer/Platforms/${{ matrix.sdk }}.platform/Developer/SDKs/${{ matrix.sdk }}.sdk/usr/include > /tmp/sdk-headers.txt
       - name: Upload to artifacts
         uses: actions/upload-artifact@v3
         with:
