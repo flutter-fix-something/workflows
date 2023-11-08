@@ -1,0 +1,42 @@
+name: Check photo manager flutter sdk can build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        pm-version:
+          - 2.7.2
+        version:
+          - "2.2.0"
+          - "3.0.5"
+          - "3.3.10"
+          - "3.7.0"
+          - "3.10.0"
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ matrix.version }}
+
+      - name: Create new project
+        run: flutter create photo_manager_test_version
+
+      - name: Add photo_manager dependency
+        run: |
+          pip3 install yaml
+          ./add_repo.py 2.7.2
+        shell: bash
+
+      - name: Get
+        run: flutter pub get
+        working-directory: ./photo_manager_test_version
+
+      - name: Build
+        run: flutter build apk --debug
+        working-directory: ./photo_manager_test_version
