@@ -30,7 +30,7 @@ jobs:
       - name: Add photo_manager dependency
         run: |
           pip3 install yaml
-          ./add_repo.py 2.7.2
+          ./add_repo.py ${{ matrix.pm-version }}
         shell: bash
 
       - name: Get
