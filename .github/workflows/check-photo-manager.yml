@@ -24,6 +24,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ matrix.version }}
+          cache: true
 
       - name: Create new project
         run: flutter create photo_manager_test_version
@@ -31,7 +32,7 @@ jobs:
       - name: Add photo_manager dependency
         run: |
           pip3 install pyyaml
-          ./add_repo.py ${{ matrix.pm-version }}
+          python3 ./add_repo.py ${{ matrix.pm-version }}
         shell: bash
 
       - name: Install dependencies
