@@ -18,7 +18,7 @@ with open(gradle_path, "r") as f:
     lines = f.readlines()
 
     for i, line in enumerate(lines):
-        if line.startswith("distributionUrl"):
+        if line.strip().startswith("distributionUrl"):
             lines[
                 i
             ] = "distributionUrl=https\\://services.gradle.org/distributions/gradle-7.5-all.zip\n"
@@ -34,7 +34,7 @@ with open(build_gradle_path, "r") as f:
     lines = f.readlines()
 
     for i, line in enumerate(lines):
-        if line.startswith("classpath"):
+        if line.strip().startswith("classpath"):
             lines[i] = "        classpath 'com.android.tools.build:gradle:7.3.0'\n"
 
 with open(build_gradle_path, "w") as f:
@@ -48,7 +48,7 @@ with open(app_build_gradle_path, "r") as f:
     lines = f.readlines()
 
     for i, line in enumerate(lines):
-        if line.startswith("compileSdkVersion"):
+        if line.strip().startswith("compileSdkVersion"):
             lines[i] = "    compileSdkVersion 34\n"
 
 with open(app_build_gradle_path, "w") as f:
