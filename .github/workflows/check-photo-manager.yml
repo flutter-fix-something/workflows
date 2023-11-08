@@ -29,14 +29,14 @@ jobs:
 
       - name: Add photo_manager dependency
         run: |
-          pip3 install yaml
+          pip3 install pyyaml
           ./add_repo.py ${{ matrix.pm-version }}
         shell: bash
 
-      - name: Get
+      - name: Install dependencies
         run: flutter pub get
         working-directory: ./photo_manager_test_version
 
-      - name: Build
+      - name: Build debug apk
         run: flutter build apk --debug
         working-directory: ./photo_manager_test_version
