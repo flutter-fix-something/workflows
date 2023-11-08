@@ -26,8 +26,8 @@ with open(gradle_path, "r") as f:
 with open(gradle_path, "w") as f:
     f.writelines(lines)
 
-# change build.gradle AGP version
-print("change build.gradle AGP version to 7.3.0")
+# change build.gradle AGP version and kotlin version
+print("change build.gradle AGP version to 7.3.0, and change kotlin version to 1.7.10")
 
 build_gradle_path = os.path.join(android_path, "build.gradle")
 with open(build_gradle_path, "r") as f:
@@ -36,6 +36,8 @@ with open(build_gradle_path, "r") as f:
     for i, line in enumerate(lines):
         if line.strip().startswith("classpath") and "com.android.tools.build" in line:
             lines[i] = "        classpath 'com.android.tools.build:gradle:7.3.0'\n"
+        elif line.strip().startswith("ext.kotlin_version"):
+            lines[i] = "    ext.kotlin_version = '1.7.10'\n"
 
 with open(build_gradle_path, "w") as f:
     f.writelines(lines)
