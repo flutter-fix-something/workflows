@@ -37,6 +37,10 @@ jobs:
           python3 ./add_repo.py ${{ matrix.pm-version }}
         shell: bash
 
+      - name: Change android config
+        run: python3 ./change-application-config.py
+        shell: bash
+
       - name: Install dependencies
         run: flutter pub get -v
         working-directory: ./photo_manager_test_version
