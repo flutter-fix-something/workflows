@@ -34,7 +34,7 @@ with open(build_gradle_path, "r") as f:
     lines = f.readlines()
 
     for i, line in enumerate(lines):
-        if line.strip().startswith("classpath"):
+        if line.strip().startswith("classpath") and "com.android.tools.build" in line:
             lines[i] = "        classpath 'com.android.tools.build:gradle:7.3.0'\n"
 
 with open(build_gradle_path, "w") as f:
