@@ -14,6 +14,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.13.9'
+          cache: true
       - name: Analyze photo manager code
         run:
           flutter analyze lib example/lib
