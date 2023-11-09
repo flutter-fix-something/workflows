@@ -30,6 +30,12 @@ jobs:
           flutter-version: ${{ matrix.version }}
           cache: true
 
+      - name: Show java & flutter info
+        run: |
+          java --version
+          echo $JAVA_HOME
+          flutter doctor -v
+
       - name: Create new project
         run: flutter create photo_manager_test_version
 
