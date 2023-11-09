@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  analyze:
+    name: Analyze photo manager code
     runs-on: ubuntu-latest
     steps:
       - name: Setup Flutter
