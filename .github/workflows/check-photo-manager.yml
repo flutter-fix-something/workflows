@@ -21,7 +21,12 @@ jobs:
           - "3.7.0"
           - "3.10.0"
           - "3.13.9"
-    name: pm(${{ matrix.pm-version }}), flutter(${{ matrix.version }}
+        java-version:
+          - "8"
+          - "11"
+          - "17"
+
+    name: pm(${{ matrix.pm-version }}), flutter(${{ matrix.version }}, java(${{ matrix.java-version }})
     steps:
       - uses: actions/checkout@v3
       - name: Setup Flutter
@@ -29,6 +34,12 @@ jobs:
         with:
           flutter-version: ${{ matrix.version }}
           cache: true
+      - name: Setup java
+        uses: actions/setup-java@v2
+        with:
+          distribution: "temurin"
+          java-version: ${{ matrix.java-version }}
+          cache: "gradle"
 
       - name: Show java & flutter info
         run: |
